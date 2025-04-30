@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = "vasanth4747/education-animation"
         TAG = "v1"
         DOCKER_USERNAME = "vasanth4747"
-        DOCKER_PASSWORD = "vasanth@47"
+        DOCKER_PASSWORD = "vasanth@47"  // Not secure - avoid using in production
     }
 
     stages {
@@ -26,10 +26,9 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
-                        docker.image("${IMAGE_NAME}:${TAG}").push()
-                    }
+                    // Use plain text credentials (not recommended)
+                    sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                    docker.image("${IMAGE_NAME}:${TAG}").push()
                 }
             }
         }
