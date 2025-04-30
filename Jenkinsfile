@@ -23,7 +23,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-credentials', url: '']) {
+                withDockerRegistry([credentialsId: 'ji', url: '']) {
                     script {
                         docker.image("${IMAGE_NAME}:${TAG}").push()
                     }
