@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "vasanth4747/education-animation"
+        IMAGE_NAME = "vasanth4747/youtube-login-krish-animation"
         TAG = "v1"
         DOCKER_USERNAME = "vasanth4747"
         DOCKER_PASSWORD = "vasanth@47"  // Not secure - avoid using in production
